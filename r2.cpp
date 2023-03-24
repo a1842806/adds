@@ -1,3 +1,5 @@
+#include <iostream>
+
 void stars(int n) {
     if (n == 0) 
     {
