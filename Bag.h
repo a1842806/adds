@@ -1,7 +1,5 @@
-#include <iostream>
 #include <vector>
 #include <cstdlib>
-
 
 using namespace std;
 
@@ -12,7 +10,6 @@ private:
 public:
     void addItem(T item);
     void removeItem();
-    void print();
 };
 
 template<class T>
@@ -23,14 +20,6 @@ void Bag<T>::addItem(T item) {
 template<class T>
 void Bag<T>::removeItem() {
     int idx = rand() % items.size();
-    cout << idx << '\n';
     items.erase(items.begin() + idx);
 }
 
-template<class T>
-void Bag<T>::print() {
-    for (int i = 0; i < items.size(); ++i) {
-        std::cout << items[i] << ' ';
-    }
-    std::cout << '\n';
-}
