@@ -1,14 +1,28 @@
+#include "Bag.h" 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-int sum_of_squares(int n, int acc) {
-    if (n == 0) return acc;
-    return sum_of_squares(n - 1, acc + n * n);
+void stars(int n) {
+    if (n == 0) return;
+    std::cout << '*';
+    stars(n - 1);
 }
 
 int main() {
-    int n = 5;
-    cout << sum_of_squares(n, 0) << '\n';
+    Bag<string> myBag;
+    myBag.addItem("A");
+    myBag.addItem("B");
+    myBag.addItem("C");
+    myBag.addItem("E");
+    myBag.print();
+
+    myBag.addItem("C");
+    myBag.addItem("E");
+    myBag.print();
+    myBag.removeItem();
+
+    myBag.print();
     return 0;
 }
