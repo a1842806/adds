@@ -21,7 +21,7 @@ int main() {
     RecursiveBinarySearch *searcher = new RecursiveBinarySearch();
     int index = searcher->search(list, 1);
 
-    cout << (index == -1 ? "False" : "True");
+    cout << (index == -1 ? "false" : "true");
     for (int i = 0; i < list.size(); i++) {
         cout << " " << list[i];
     }
