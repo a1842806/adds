@@ -16,7 +16,7 @@ void smallSort(int left, int right, std::vector<int> &list) {
     while (i < j) {
         while (list[i] < list[right]) i++;
         while (list[j] > list[right]) j--;
-        if (i < j) std::swap(list[i++], list[j--]);
+        if (i < j) std::swap(list[i], list[j]);
     }
     std::swap(list[i], list[right]);
     smallSort(left, i - 1, list);
