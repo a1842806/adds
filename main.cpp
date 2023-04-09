@@ -10,38 +10,20 @@
 using namespace std;
 
 int main() {
-    //create a random list of unordered numbers
-    int arr[] = {3, 1, 8, 2, 9, 5, 4, 7, 6, 0, 10};
-    vector<int> list(arr, arr + sizeof(arr) / sizeof(int));
-
-    //create sort objects
-    Sort* bubbleSort = new BubbleSort;
-    Sort* quickSort = new QuickSort;
-
-    //sort the list
-    vector<int> ans = bubbleSort->sort(list);
-    vector<int> ans2 = quickSort->sort(list);
-
-    //print the sorted list
-    for (int i = 0; i < ans.size(); i++) {
-        cout << ans[i] << " ";
+    int x;
+    vector<int> list;
+    while (cin >> x) {
+        list.push_back(x);
     }
-    cout << endl;
+    Sort *sorter = new QuickSort();
+    list = sorter->sort(list);
 
-    for (int i = 0; i < ans2.size(); i++) {
-        cout << ans2[i] << " ";
+    RecursiveBinarySearch *searcher = new RecursiveBinarySearch();
+    int index = searcher->search(list, 1);
+
+    cout << (index == -1 ? "False" : "True");
+    for (int i = 0; i < list.size(); i++) {
+        cout << " " << list[i];
     }
-    cout << endl;
-
-    //create search object
-    RecursiveBinarySearch* binarySearch = new RecursiveBinarySearch;
-
-    //search for a number
-    int target = 5;
-    int index = binarySearch->search(ans, target);
-
-    //print the index of the number
-    cout << "The index of " << target << " is " << index << endl;
-
     return 0;
 }

@@ -2,6 +2,7 @@
 #include "RecursiveBinarySearch.h"
 
 int binarySearch(int left, int right, std::vector<int> list, int target) {
+    if (left > right) return -1;
     int mid = (left + right) >> 1;
     if (list[mid] == target) return mid;
     if (list[mid] > target) return binarySearch(left, mid - 1, list, target);
