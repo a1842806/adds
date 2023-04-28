@@ -26,7 +26,7 @@ void LinkedList::insertPosition(int pos, int newNum) {
         newNode->next(nextNode);
         return;
     }
-    while (pos-- && nextNode) {
+    while (--pos && nextNode) {
         prevNode = nextNode;
         nextNode = nextNode->getNext();
     }
@@ -43,6 +43,7 @@ bool LinkedList::deletePosition(int pos) {
         nextNode = nextNode->getNext();
         if (nextNode == nullptr) return false;
     }
+    //std::cout << prevNode->getVal() << '\n';
     if (prevNode) 
         prevNode->next(nextNode->getNext());
     else 
