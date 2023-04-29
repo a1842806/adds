@@ -43,7 +43,6 @@ bool LinkedList::deletePosition(int pos) {
         nextNode = nextNode->getNext();
         if (nextNode == nullptr) return false;
     }
-    //std::cout << prevNode->getVal() << '\n';
     if (prevNode) 
         prevNode->next(nextNode->getNext());
     else 
@@ -87,11 +86,9 @@ void LinkedList::printList() {
 }
 
 LinkedList::~LinkedList() {
-    std::vector<Node*> list;
     while (head) {
-        list.push_back(head);
-        head = head->getNext();
+        Node* cur = head->getNext();
+        delete head;
+        head = cur;
     }
-    for (int i = list.size() - 1; i >= 0; --i) 
-        delete list[i];
 }
