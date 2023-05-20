@@ -43,7 +43,7 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
-  int initial_parent_index = floor(values.size() / 2) - 1;
+  int initial_parent_index = floor((values.size()-1) / 2);
   for (int parent_index = initial_parent_index; parent_index >= 0;
        parent_index--) {
     heapify(parent_index);
@@ -56,13 +56,7 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
 template <typename T>
 void Heap<T>::insert(T value) {
-  int current = values.size();
-  values.push_back(value);
-  while (current) {
-    int parent = (current - (2 - current % 2)) / 2;
-    if (values[current] > values[parent]) swap(values[current], values[parent]);
-    current = parent;
-  }
+   // TO BE IMPLEMENTED
 }
 
 /*******************************/
@@ -71,10 +65,7 @@ void Heap<T>::insert(T value) {
 
 template <typename T>
 void Heap<T>::remove(T value) {
-  if (values.empty()) return;
-  values[0] = values.back();
-  values.pop_back();
-  heapify(0);
+  // TO BE IMPLEMENTED
 }
 
 /*******************************/
@@ -83,7 +74,7 @@ void Heap<T>::remove(T value) {
 
 template <typename T>
 T Heap<T>::getMin() {
-  return values[0];
+  // TO BE IMPLEMENTED
 }
 
 /*******************************/
@@ -121,11 +112,11 @@ void Heap<T>::heapify(int parent_index) {
     T temp = values.at(parent_index);
     values.at(parent_index) = values.at(index_of_smallest);
     values.at(index_of_smallest) = temp;
-  }
 
-  // move up the 'tree' to grandparent
-  int grandparent = floor(parent_index/2) - 1;
-  heapify(grandparent);
+    // heapify the swapped index - it may need to move
+    // further down the 'tree'
+    heapify(index_of_smallest);
+  }
 }
 
 #endif
