@@ -60,7 +60,11 @@ void Heap<T>::insert(T value) {
   values.push_back(value);
   while (current) {
     int parent = (current - (2 - current % 2)) / 2;
-    if (values[current] > values[parent]) swap(values[current], values[parent]);
+    if (values[current] < values[parent]) {
+      T tmp = values[current];
+      values[current] = values[parent];
+      values[parent] = tmp;
+    }
     current = parent;
   }
 }
@@ -71,10 +75,15 @@ void Heap<T>::insert(T value) {
 
 template <typename T>
 void Heap<T>::remove(T value) {
-  if (values.empty()) return;
-  values[0] = values.back();
-  values.pop_back();
-  heapify(0);
+  for (int i = 0; i < values.size(); ++i) {
+    if (values[i] == value) {
+      values[i] = values.back();
+      values.pop_back();
+      heapify(i);
+      return;
+    }
+  }
+  
 }
 
 /*******************************/
