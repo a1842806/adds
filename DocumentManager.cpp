@@ -4,6 +4,7 @@
 
 void DocumentManager::addDocument(std::string name, int id, int license_limit) {
     Document doc(name, id, license_limit);
+    documents.push_back(doc);
 }
 
 void DocumentManager::addPatron(int patronID) {
@@ -40,7 +41,6 @@ void DocumentManager::returnDocument(int docid, int patronID) {
     for (int i = 0; i < documents.size(); i++) {
         if (documents[i].id == docid) {
             documents[i].copies_borrowed--;
-            return;
         }
     }
 }
